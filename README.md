@@ -22,3 +22,65 @@ The system parses resumes, extracts skills, compares them with job descriptions,
 ---
 
 # 🧠 System Architecture
+
+```mermaid
+flowchart TD
+
+A[Recruiter / User] --> B[Streamlit Dashboard]
+
+B --> C[Upload Resume PDFs]
+C --> D[Resume Parsing - pdfplumber]
+
+D --> E[NLP Skill Extraction - spaCy]
+
+E --> F[Sentence Transformer Embeddings]
+
+F --> G[FAISS Vector Database]
+
+G --> H[RAG Candidate Retrieval]
+
+H --> I[LLM Evaluation - Groq Llama]
+
+I --> J[Candidate Ranking System]
+
+J --> K[Skill Gap Visualization]
+
+J --> L[Recruiter PDF Report]
+
+J --> M[AI Resume Chatbot]
+```
+
+DataFlow Diagram
+Resume PDFs
+│
+▼
+PDF Parser
+│
+▼
+Text Extraction
+│
+▼
+Skill Extraction (NLP)
+│
+▼
+Sentence Embedding Model
+│
+▼
+FAISS Vector Index
+│
+▼
+RAG Retrieval (Top Candidates)
+│
+▼
+LLM Evaluation (Groq Llama)
+│
+▼
+Candidate Score + Skills Analysis
+│
+▼
+Streamlit Dashboard
+│
+├── Leaderboard
+├── Skill Gap Chart
+├── PDF Recruiter Report
+└── AI Resume Chatbot
